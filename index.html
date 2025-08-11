@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 001 ♠</title>
+  <title>♠ ACRO HOLD'EM 003 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:10px;background:#f7f9fb;color:#111}
@@ -88,10 +88,8 @@
       });
       
       document.querySelectorAll('[data-mult]').forEach(s => {
-        const v = parseFloat(s.textContent);
-        alert(v);
+        const v = parseFloat(s.textContent.replace(/,/g, ''));
         if(!isNaN(v)) posttax_sum += v;
-        alert(posttax_sum);
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
@@ -105,10 +103,10 @@
 
       const tdInput = document.createElement('td');
       const input = document.createElement('input');
-      input.type = 'number';
+      input.type = 'text';
       input.step = 'any';
       input.min = -999999;
-      input.setAttribute('pattern', '-?[0-9]*')
+      input.setAttribute('pattern', '-?[0-9]+')
       input.placeholder = '입력';
       input.value = '';
       input.dataset.person = name;
@@ -152,6 +150,7 @@
   </script>
 </body>
 </html>
+
 
 
 
