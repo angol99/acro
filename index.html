@@ -29,9 +29,9 @@
     <table>
       <thead>
         <tr>
-          <th style="width:60px">이름</th>
-          <th style="width:80px">세전</th>
-          <th style="width:35px">+/-</th>
+          <th style="width:60px"></th>
+          <th style="width:75px">세전</th>
+          <th style="width:40px"></th>
           <th>세후</th>
         </tr>
       </thead>
@@ -105,13 +105,26 @@
       tdName.textContent = name;
 
       const tdToggleButton = document.createElement('td');
-      const button = document.createElement('button');
-      button.innerText = "+/-";
-      button.addEventListener('button', (e) => {
-        alert("hihi")
-      });
-      tdToggleButton.appendChild(button);
+      const signBtn = document.createElement('button');
+      signBtn.textContent = '±';
+      signBtn.style.padding = '4px 8px';
+      tdToggleButton.appendChild(signBtn);
+      signBtn.addEventListener('click', () => {
+        let v = parseFloat(input.value);
+        if (!isNaN(v)) {
+          input.value = -v;
+          // 세후 금액도 바로 갱신
 
+          if(Number(v) < 0){
+            target.textContent = "-"
+          } else {
+            const target = document.querySelector(`[data-mult="${name}"]`);
+            target.textContent = fmt(Number(input.value) * 0.7);
+            updateTotal();
+          }
+        }
+      });
+      
       const tdInput = document.createElement('td');
       const input = document.createElement('input');
       input.type = 'number';
@@ -136,6 +149,7 @@
 
       button.addEventListener('click', (e) => {
         alert("aaaaa");
+        
       });
 
       input.addEventListener('input', (e) => {
@@ -170,6 +184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
