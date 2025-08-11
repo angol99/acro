@@ -39,23 +39,25 @@
       </tbody>
       <tfoot>
         <tr>
-          <td>검증(총액)</td>
+          <td>검증</td>
           <td colspan="2" id="totalValue">—</td>
+        </tr>
+        <tr>
+          <td>세금총액</td>
+          <td colspan="2" id="totalTAX">—</td>
         </tr>
       </tfoot>
     </table>
-
-    <div class="hint">세전금액 입력하면 바로 옆에 세후금액이 표시되고, 아래 총액이 실시간 계산됩니다.</div>
-
     <footer>
       <button id="resetBtn">초기화</button>
     </footer>
   </div>
 
   <script>
-    const names = ["서빠", "서맘", "도빠", "도맘", "혜빠", "혜맘", "지빠", "지맘", "♡♡", "♤♤"];
+    const names = ["서빠", "서맘", "도빠", "도맘", "혜빠", "혜맘", "지빠", "지맘"];
     const tbody = document.getElementById('tbody');
     const totalValueEl = document.getElementById('totalValue');
+    const totalTAXEl = document.getElementById('totalTAX');
 
     function fmt(n){
       if(n === '' || n === null || isNaN(n)) return '';
@@ -69,6 +71,24 @@
         if(!isNaN(v)) sum += v;
       });
       totalValueEl.textContent = fmt(sum) || '—';
+    }
+
+    function updateTotalTAX(){
+
+      let winners_pretax_sum = 0;
+      let posttax_sum = 0;
+      
+      document.querySelectorAll('input[type=number]').forEach(i => {
+        const v = parseFloat(i.value);
+        if(!isNaN(v) && v > 0) winners_pretax_sum += v;
+      });
+      
+      document.querySelectorAll('[data-mult]').forEach(i => {
+        const v = parseFloat(i.value);
+        if(!isNaN(v)) posttax_sum += v;
+      });
+
+      totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
     }
 
     names.forEach(name => {
@@ -103,11 +123,12 @@
           if(Number(v) < 0){
             target.textContent = "-"
           } else {
-            const num = Number(v) * 10;
+            const num = Number(v) * 0.3;
             target.textContent = fmt(num); 
           }
         }
         updateTotal();
+        updateTotalTAX();
       });
     });
 
@@ -115,10 +136,12 @@
       document.querySelectorAll('input[type=number]').forEach(i => i.value = '');
       document.querySelectorAll('[data-mult]').forEach(s => s.textContent = '—');
       updateTotal();
+      updateTotalTAX();
     });
   </script>
 </body>
 </html>
+
 
 
 
