@@ -44,7 +44,8 @@
         </tr>
         <tr>
           <td>세금총액</td>
-          <td colspan="2" id="totalTAX">—</td>
+          <td id="totalTAX">—</td>
+          <td><button id="TAXCalBtn">계산</button></td>
         </tr>
       </tfoot>
     </table>
@@ -133,7 +134,6 @@
           }
         }
         updateTotal();
-        updateTotalTAX();
       });
     });
 
@@ -143,16 +143,10 @@
       updateTotal();
       updateTotalTAX();
     });
+
+    document.getElementById('TAXCalBtn').addEventListener('click', () => {
+      updateTotalTAX();
+    });
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
