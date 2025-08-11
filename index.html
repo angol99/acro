@@ -108,9 +108,12 @@
       input.min = -999999;
       input.placeholder = '입력';
       input.value = '';
+      input.setAttribute('inputmode', 'decimal'); // 키패드에서도 음수 허용
+      input.setAttribute('pattern', '-?[0-9]*');  // 마이너스 허용
+
       input.dataset.person = name;
       tdInput.appendChild(input);
-
+      
       const tdMult = document.createElement('td');
       tdMult.innerHTML = '<span class="mult" data-mult="'+name+'">—</span>';
 
@@ -150,6 +153,7 @@
   </script>
 </body>
 </html>
+
 
 
 
