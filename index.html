@@ -6,8 +6,8 @@
   <title>♠ ACRO HOLD'EM 006 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
-    body{padding:10px;background:#f7f9fb;color:#111}
-    .container{max-width:760px;margin:0 auto;background:#fff;padding:10px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.08)}
+    body{padding:8px;background:#f7f9fb;color:#111}
+    .container{max-width:760px;margin:0 auto;background:#fff;padding:8px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.08)}
     h1{font-size:20px;margin:0 0 12px}
     table{width:100%;border-collapse:collapse}
     th,td{padding:8px 10px;text-align:left}
@@ -29,8 +29,8 @@
     <table>
       <thead>
         <tr>
-          <th style="width:50px">이름</th>
-          <th style="width:100px">세전</th>
+          <th style="width:60px">이름</th>
+          <th style="width:85px">세전</th>
           <th style="width:30px">+/-</th>
           <th>세후</th>
         </tr>
@@ -44,12 +44,12 @@
           <td colspan="2" id="totalValue">—</td>
         </tr>
         <tr>
-          <td>세금총액</td>
+          <td>총세금</td>
           <td id="totalTAX">—</td>
-          <td><button id="TAXCalBtn">계산</button></td>
+          <td colspan="2"><button id="TAXCalBtn">계산</button></td>
         </tr>
         <tr>
-          <td colspan=3><button id="resetBtn">초기화</button></td>
+          <td colspan="2"><button id="resetBtn">초기화</button></td>
         </tr>
       </tfoot>
     </table>
@@ -132,6 +132,10 @@
       tr.appendChild(tdMult);
       tbody.appendChild(tr);
 
+      button.addEventListener('click', (e) => {
+        alert("aaaaa");
+      });
+
       input.addEventListener('input', (e) => {
         const v = e.target.value;
         const target = document.querySelector(`[data-mult="${name}"]`);
@@ -142,12 +146,13 @@
           if(Number(v) < 0){
             target.textContent = "-"
           } else {
-            const num = Number(v) * 0.3;
+            const num = Number(v) * 0.7;
             target.textContent = fmt(num); 
           }
         }
         updateTotal();
       });
+      
     });
 
     document.getElementById('resetBtn').addEventListener('click', () => {
@@ -163,6 +168,7 @@
   </script>
 </body>
 </html>
+
 
 
 
