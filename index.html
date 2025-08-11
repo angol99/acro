@@ -6,7 +6,7 @@
   <title>ACRO HOLD'EM</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
-    body{padding:24px;background:#f7f9fb;color:#111}
+    body{padding:10px;background:#f7f9fb;color:#111}
     .container{max-width:760px;margin:0 auto;background:#fff;padding:20px;border-radius:12px;box-shadow:0 6px 20px rgba(16,24,40,.08)}
     h1{font-size:20px;margin:0 0 12px}
     table{width:100%;border-collapse:collapse}
@@ -30,7 +30,7 @@
       <thead>
         <tr>
           <th style="width:110px">이름</th>
-          <th style="width:220px">세전</th>
+          <th style="width:150px">세전</th>
           <th>세후</th>
         </tr>
       </thead>
@@ -87,7 +87,7 @@
       tdInput.appendChild(input);
 
       const tdMult = document.createElement('td');
-      tdMult.innerHTML = '<span class="small">10× = </span> <span class="mult" data-mult="'+name+'">—</span>';
+      tdMult.innerHTML = '<span class="mult" data-mult="'+name+'">—</span>';
 
       tr.appendChild(tdName);
       tr.appendChild(tdInput);
@@ -100,8 +100,12 @@
         if(v === '' || v === '-' || isNaN(Number(v))) {
           target.textContent = '—';
         } else {
-          const num = Number(v) * 10;
-          target.textContent = fmt(num);
+          if(Number(v) < 0){
+            target.textContent = "-"
+          } else {
+            const num = Number(v) * 10;
+            target.textContent = fmt(num); 
+          }
         }
         updateTotal();
       });
@@ -115,5 +119,6 @@
   </script>
 </body>
 </html>
+
 
 
