@@ -86,10 +86,9 @@
         if(!isNaN(v) && v > 0) winners_pretax_sum += v;
       });
       
-      document.querySelectorAll('[data-mult]').forEach(i => {
-        const v = parseFloat(i.value);
+      document.querySelectorAll('[data-mult]').forEach(s => {
+        const v = parseFloat(s.textContent);
         if(!isNaN(v)) posttax_sum += v;
-        alert(v, posttax_sum);
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
@@ -147,6 +146,7 @@
   </script>
 </body>
 </html>
+
 
 
 
