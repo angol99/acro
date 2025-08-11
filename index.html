@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM ♠</title>
+  <title>♠ ACRO HOLD'EM 001 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:10px;background:#f7f9fb;color:#111}
@@ -30,7 +30,7 @@
       <thead>
         <tr>
           <th style="width:70px">이름</th>
-          <th style="width:150px">세전</th>
+          <th style="width:120px">세전</th>
           <th>세후</th>
         </tr>
       </thead>
@@ -47,11 +47,11 @@
           <td id="totalTAX">—</td>
           <td><button id="TAXCalBtn">계산</button></td>
         </tr>
+        <tr>
+          <td colspan=3><button id="resetBtn">초기화</button></td>
+        </tr>
       </tfoot>
     </table>
-    <footer>
-      <button id="resetBtn">초기화</button>
-    </footer>
   </div>
 
   <script>
@@ -89,7 +89,9 @@
       
       document.querySelectorAll('[data-mult]').forEach(s => {
         const v = parseFloat(s.textContent);
+        alert(v);
         if(!isNaN(v)) posttax_sum += v;
+        alert(posttax_sum);
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
@@ -150,5 +152,6 @@
   </script>
 </body>
 </html>
+
 
 
