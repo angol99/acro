@@ -73,6 +73,9 @@
       totalValueEl.textContent = fmt(sum) || '—';
     }
 
+      document.querySelectorAll('[data-mult]').forEach(s => s.textContent = '—');
+
+    
     function updateTotalTAX(){
 
       let winners_pretax_sum = 0;
@@ -86,6 +89,7 @@
       document.querySelectorAll('[data-mult]').forEach(i => {
         const v = parseFloat(i.value);
         if(!isNaN(v)) posttax_sum += v;
+        alert(v, posttax_sum)
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
@@ -143,6 +147,7 @@
   </script>
 </body>
 </html>
+
 
 
 
