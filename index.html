@@ -29,8 +29,9 @@
     <table>
       <thead>
         <tr>
-          <th style="width:70px">이름</th>
-          <th style="width:120px">세전</th>
+          <th style="width:50px">이름</th>
+          <th style="width:100px">세전</th>
+          <th style="width:30px">+/-</th>
           <th>세후</th>
         </tr>
       </thead>
@@ -101,6 +102,14 @@
       const tdName = document.createElement('td');
       tdName.textContent = name;
 
+      const tdToggleButton = document.createElement('td');
+      const button = document.createElement('button');
+      button.innerText = "+/-";
+      button.addEventListener('button', (e) => {
+        alert("hihi")
+      });
+      tdToggleButton.appendChild(button);
+
       const tdInput = document.createElement('td');
       const input = document.createElement('input');
       input.type = 'number';
@@ -108,7 +117,7 @@
       input.min = -999999;
       input.placeholder = '입력';
       input.value = '';
-      input.setAttribute('inputmode', 'decimal'); // 키패드에서도 음수 허용
+      //input.setAttribute('inputmode', 'decimal'); // 키패드에서도 음수 허용
       input.setAttribute('pattern', '-?[0-9]*');  // 마이너스 허용
 
       input.dataset.person = name;
@@ -153,6 +162,7 @@
   </script>
 </body>
 </html>
+
 
 
 
