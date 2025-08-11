@@ -101,6 +101,8 @@
       const input = document.createElement('input');
       input.type = 'number';
       input.step = 'any';
+      input.min = -999999;
+      input.setAttribute('pattern', '-?[0-9]*')
       input.placeholder = '입력';
       input.value = '';
       input.dataset.person = name;
@@ -141,6 +143,7 @@
   </script>
 </body>
 </html>
+
 
 
 
