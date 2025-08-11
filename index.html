@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 003 ♠</title>
+  <title>♠ ACRO HOLD'EM 004 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:10px;background:#f7f9fb;color:#111}
@@ -103,10 +103,9 @@
 
       const tdInput = document.createElement('td');
       const input = document.createElement('input');
-      input.type = 'text';
+      input.type = 'number';
       input.step = 'any';
       input.min = -999999;
-      input.setAttribute('pattern', '-?[0-9]+')
       input.placeholder = '입력';
       input.value = '';
       input.dataset.person = name;
@@ -123,6 +122,7 @@
       input.addEventListener('input', (e) => {
         const v = e.target.value;
         const target = document.querySelector(`[data-mult="${name}"]`);
+        
         if(v === '' || v === '-' || isNaN(Number(v))) {
           target.textContent = '—';
         } else {
@@ -150,6 +150,7 @@
   </script>
 </body>
 </html>
+
 
 
 
