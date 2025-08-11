@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 007 ♠</title>
+  <title>♠ ACRO HOLD'EM 008 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -115,7 +115,7 @@
           input.value = -v;
           // 세후 금액도 바로 갱신
 
-          if(Number(v) < 0){
+          if(Number(-v) < 0){
             target.textContent = "-"
           } else {
             const target = document.querySelector(`[data-mult="${name}"]`);
@@ -179,6 +179,7 @@
   </script>
 </body>
 </html>
+
 
 
 
