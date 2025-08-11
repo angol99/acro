@@ -111,6 +111,7 @@
       tdToggleButton.appendChild(signBtn);
       signBtn.addEventListener('click', () => {
         let v = parseFloat(input.value);
+        const target = document.querySelector(`[data-mult="${name}"]`);
         if (!isNaN(v)) {
           input.value = -v;
           // 세후 금액도 바로 갱신
@@ -118,7 +119,6 @@
           if(Number(-v) < 0){
             target.textContent = "-"
           } else {
-            const target = document.querySelector(`[data-mult="${name}"]`);
             target.textContent = fmt(Number(input.value) * 0.7);
             updateTotal();
           }
@@ -179,6 +179,7 @@
   </script>
 </body>
 </html>
+
 
 
 
