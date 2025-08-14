@@ -156,6 +156,25 @@
       tr.appendChild(tdMult);
       tbody.appendChild(tr);
 
+      input.addEventListener('input', (e) => {
+        /*
+        const v = e.target.value;
+        const target = document.querySelector(`[data-mult="${name}"]`);
+        
+        if(v === '' || v === '-' || isNaN(Number(v))) {
+          target.textContent = '—';
+        } else {
+          if(Number(v) < 0){
+            target.textContent = "-"
+          } else {
+            const num = calculate_posttax(Number(v));
+            target.textContent = fmt(num); 
+          }
+        }
+        */
+        updateTotal();
+      });
+      
       /*
       input.addEventListener('input', (e) => {
         const v = e.target.value;
@@ -190,3 +209,4 @@
   </script>
 </body>
 </html>
+
