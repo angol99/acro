@@ -46,7 +46,7 @@
         <tr>
           <td>총세금</td>
           <td id="totalTAX">—</td>
-          <td colspan="2"><button id="TAXCalBtn">계산</button></td>
+          <td colspan="2"><button id="TAXCalBtn">세금 계산</button></td>
         </tr>
         <tr>
           <td colspan="2"><button id="resetBtn">초기화</button></td>
@@ -95,6 +95,13 @@
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
+    }
+
+    function update_posttax(){
+      names.forEach(name => {
+        const target = document.querySelector(`[data-mult="${name}"]`);
+        target.textContent = "${name}"
+      });
     }
 
     function calculate_posttax(pretax_income) {
@@ -204,10 +211,12 @@
     });
 
     document.getElementById('TAXCalBtn').addEventListener('click', () => {
-      updateTotalTAX();
+      updateTAX();
+      update_posttax();
     });
   </script>
 </body>
 </html>
+
 
 
