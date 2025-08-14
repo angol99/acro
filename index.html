@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 12 ♠</title>
+  <title>♠ ACRO HOLD'EM 00 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -101,7 +101,25 @@
       names.forEach(name => {
         const target = document.querySelector(`[data-mult="${name}"]`);
         target.textContent = "xxxx";
-        alert(name);
+
+        const input = document.querySelector(`[data-person="${name}"]`);
+      
+        alert(name, input.value);
+        
+        /*
+        if(v === '' || v === '-' || isNaN(Number(v))) {
+          target.textContent = '—';
+        } else {
+          if(Number(v) < 0){
+            target.textContent = "-"
+          } else {
+            const num = calculate_posttax(Number(v));
+            target.textContent = fmt(num); 
+          }
+        }
+        */
+
+        
       });
     }
 
@@ -218,6 +236,7 @@
   </script>
 </body>
 </html>
+
 
 
 
