@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 04 ♠</title>
+  <title>♠ ACRO HOLD'EM 05 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -119,8 +119,10 @@
         const target = document.querySelector(`[data-mult="${name}"]`);
         if (!isNaN(v)) {
           input.value = -v;
-          // 세후 금액도 바로 갱신
-
+          // 세후금액은 "-"처리하고, 검증용 총액값은 업데이트함
+          target.textContent = "-"
+          updateTotal();
+          /*
           if(Number(-v) < 0){
             target.textContent = "-"
             updateTotal();
@@ -128,6 +130,7 @@
             target.textContent = fmt(calculate_posttax(Number(input.value)));
             updateTotal();
           }
+          */
         }
       });
       
@@ -153,6 +156,7 @@
       tr.appendChild(tdMult);
       tbody.appendChild(tr);
 
+      /*
       input.addEventListener('input', (e) => {
         const v = e.target.value;
         const target = document.querySelector(`[data-mult="${name}"]`);
@@ -169,6 +173,7 @@
         }
         updateTotal();
       });
+      */
       
     });
 
@@ -185,26 +190,3 @@
   </script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
