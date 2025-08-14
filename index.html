@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 008 ♠</title>
+  <title>♠ ACRO HOLD'EM 01 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -77,9 +77,8 @@
       totalValueEl.textContent = fmt(sum) || '—';
     }
 
-      document.querySelectorAll('[data-mult]').forEach(s => s.textContent = '—');
+    document.querySelectorAll('[data-mult]').forEach(s => s.textContent = '—');
 
-    
     function updateTotalTAX(){
 
       let winners_pretax_sum = 0;
@@ -96,6 +95,11 @@
       });
 
       totalTAXEl.textContent = fmt(winners_pretax_sum - posttax_sum) || '—';
+    }
+
+    function calculate_posttax(pretax_income) {
+      const posttax = pretax_income * 0.80
+      return posttax;
     }
 
     names.forEach(name => {
@@ -118,8 +122,9 @@
 
           if(Number(-v) < 0){
             target.textContent = "-"
+            updateTotal();
           } else {
-            target.textContent = fmt(Number(input.value) * 0.7);
+            target.textContent = fmt(calculate_posttax(Number(input.value)));
             updateTotal();
           }
         }
@@ -157,7 +162,7 @@
           if(Number(v) < 0){
             target.textContent = "-"
           } else {
-            const num = Number(v) * 0.7;
+            const num = calculate_posttax(Number(v));
             target.textContent = fmt(num); 
           }
         }
@@ -179,6 +184,7 @@
   </script>
 </body>
 </html>
+
 
 
 
