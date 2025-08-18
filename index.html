@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM 002 ♠</title>
+  <title>♠ ACRO HOLD'EM 001 ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -102,7 +102,7 @@
         const target = document.querySelector(`[data-mult="${name}"]`);
         target.textContent = "xxxx";
 
-        const el = document.querySelector(`[data-person="${name}"]`);
+        const el = document.querySelector(`input[data-person="${name}"]`);
       
         alert(name, el.value);
         
@@ -236,6 +236,7 @@
   </script>
 </body>
 </html>
+
 
 
 
