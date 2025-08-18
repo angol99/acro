@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>♠ ACRO HOLD'EM ♠</title>
+  <title>♠ ACRO HOLD 'EM ♠</title>
   <style>
     :root{font-family:Inter,system-ui,Segoe UI,Roboto,'Noto Sans KR',sans-serif}
     body{padding:8px;background:#f7f9fb;color:#111}
@@ -121,7 +121,7 @@
     function calculate_posttax(pretax_income) {
       const bars = [10000, 20000, 30000]
       const rates = [0.15, 0.25, 0.35, 0.45]
-      return Math.min(bar[0], pretax_income)*rates[0] + Math.max(Math.min(bar[1], pretax_income) - bar[0], 0) * rate[1] + Math.max(Math.min(bar[2], pretax_income) - bar[1], 0) * rate[2] + Math.max(0, pretax_income - bar[2]) * rate[3];
+      return Math.min(bars[0], pretax_income)*rates[0] + Math.max(Math.min(bars[1], pretax_income) - bars[0], 0) * rates[1] + Math.max(Math.min(bars[2], pretax_income) - bars[1], 0) * rates[2] + Math.max(0, pretax_income - bars[2]) * rates[3];
     }
 
     names.forEach(name => {
@@ -231,6 +231,7 @@
   </script>
 </body>
 </html>
+
 
 
 
