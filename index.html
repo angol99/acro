@@ -164,6 +164,10 @@
       return pretax_income - tax;
     }
 
+    function getFirstTwoHangul(str) {
+      return str.slice(0, 2);
+    }
+    
     function find_1st_player() {
       let maxValue = -Infinity;
       let maxTr = null;
@@ -171,6 +175,8 @@
       document.querySelectorAll('#tbody tr').forEach(tr => {
         const input = tr.querySelector('input[type="number"]');
         const value = parseFloat(input.value);
+        const _firstTd = tr.querySelector('td');
+        _firstTd.textContent = getFirstTwoHangul(_firstTd.textContent)
         
         if (!isNaN(value) && value > maxValue) {
           maxValue = value;
@@ -291,6 +297,7 @@
   </script>
 </body>
 </html>
+
 
 
 
