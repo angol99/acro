@@ -164,6 +164,26 @@
       return pretax_income - tax;
     }
 
+    function find_1st_player() {
+      let maxValue = -Infinity;
+      let maxTr = null;
+    
+      document.querySelectorAll('#tbody tr').forEach(tr => {
+        const input = tr.querySelector('input[type="number"]');
+        const value = parseFloat(input.value);
+        
+        if (!isNaN(value) && value > maxValue) {
+          maxValue = value;
+          maxTr = tr;
+        }
+      });
+    
+      if (maxTr) {
+        const firstTd = maxTr.querySelector('td');
+        firstTd.textContent = `${firstTd.textContent}👑`;
+      }
+    }
+
     names.forEach(name => {
       const tr = document.createElement('tr');
 
@@ -180,7 +200,6 @@
         const target = document.querySelector(`[data-mult="${name}"]`);
         if (!isNaN(v)) {
           input.value = -v;
-          // 세후금액은 "-"처리하고, 검증용 총액값은 업데이트함
           target.textContent = "-"
           updateTotal();
           /*
@@ -202,8 +221,7 @@
       input.min = -999999;
       input.placeholder = '입력';
       input.value = '';
-      //input.setAttribute('inputmode', 'decimal'); // 키패드에서도 음수 허용
-      input.setAttribute('pattern', '-?[0-9]*');  // 마이너스 허용
+      input.setAttribute('pattern', '-?[0-9]*');
 
       input.dataset.person = name;
       tdInput.appendChild(input);
@@ -262,15 +280,18 @@
       document.querySelectorAll('[data-mult]').forEach(s => s.textContent = '—');
       updateTotal();
       updateTotalTAX();
+      find_1st_player();
     });
 
     document.getElementById('TAXCalBtn').addEventListener('click', () => {
       update_posttax();
       updateTotalTAX();
+      find_1st_player();
     });
   </script>
 </body>
 </html>
+
 
 
 
